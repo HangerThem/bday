@@ -1,9 +1,10 @@
-import os from "os"
+import os from "os";
 
-app.get("/", (req, res) => {
+export async function GET(req: Request, res: Response) {
   const networkInterfaces = os.networkInterfaces();
 
-  res.json({
-    networkInterfaces,
+  return new Response(JSON.stringify(networkInterfaces), {
+    headers: { "content-type": "application/json" },
+    status: 200,
   });
-});
+}
